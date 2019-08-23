@@ -1,9 +1,22 @@
-import styled from "styled-components";
+import React from 'react'
+import List from './style'
+import Card from '../Card'
 
-const CardList = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 2em;
-`
+function CardList({
+    tools = [], 
+    handleShowRemove = () => {}
+}) {
+
+
+    return (
+        <List data-testid='card-list'>
+            {tools.map((tool) => (
+                <Card data-testid='card' key={tool.id}
+                  tool={tool}
+                  showRemove={handleShowRemove} />
+              ))}
+        </List>
+    )
+}
 
 export default CardList

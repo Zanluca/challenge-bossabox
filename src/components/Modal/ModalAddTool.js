@@ -63,7 +63,7 @@ function ModalAddTool(props) {
     }
 
     return (
-        <ModaBackground ref={refBackground} onClick={(e) => handleBackgroungClick(e)} show={props.show}>
+        <ModaBackground data-testid='modal-add' ref={refBackground} onClick={(e) => handleBackgroungClick(e)} show={props.show}>
             <ModalContainer>
                 <ModalTitle>
                     <span><FontAwesomeIcon icon='plus'/> Add new tool</span>
@@ -71,19 +71,19 @@ function ModalAddTool(props) {
                 </ModalTitle>
                 <ModalBody>
                     <LabelInput>Tool Name</LabelInput>
-                    <InputText value={tool.title} onChange={handleTitleType}/>
+                    <InputText aria-label='tool-name' value={tool.title} onChange={handleTitleType}/>
 
                     <LabelInput>Tool Link</LabelInput>
-                    <InputText value={tool.link} onChange={handleLinkType}/>
+                    <InputText aria-label='tool-link' value={tool.link} onChange={handleLinkType}/>
 
                     <LabelInput>Tool Description</LabelInput>
-                    <InputTextLarge rows="6" cols="54" value={tool.description} onChange={handleDescriptionType}/>
+                    <InputTextLarge aria-label='tool-description' rows="6" cols="54" value={tool.description} onChange={handleDescriptionType}/>
 
                     <LabelInput>Tool Tags</LabelInput>
-                    <InputText value={tagsStr} onChange={handleTagsType}/>
+                    <InputText aria-label='tool-tags' value={tagsStr} onChange={handleTagsType}/>
                 </ModalBody>
                 <ModalFooter>
-                <Button primary neutral onClick={() => props.addTool(tool)}>Add tool</Button>
+                <Button aria-label='button-add-tool' primary neutral onClick={() => props.addTool(tool)}>Add tool</Button>
                 </ModalFooter>
             </ModalContainer>
         </ModaBackground>

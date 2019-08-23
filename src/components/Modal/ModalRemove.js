@@ -19,7 +19,7 @@ function ModalRemove(props) {
     }
 
     return (
-        <ModaBackground ref={refBackground} onClick={(e) => handleBackgroungClick(e)} show={props.show}>
+        <ModaBackground data-testid='modal-remove' ref={refBackground} onClick={(e) => handleBackgroungClick(e)} show={props.show}>
             <ModalContainer>
                 <ModalTitle>
                     <span><FontAwesomeIcon icon='times'/> Remove tool</span>
@@ -29,8 +29,8 @@ function ModalRemove(props) {
                     Are you sure you want to remove {props.name}?
                 </ModalBody>
                 <ModalFooter>
-                <Button primary danger onClick={props.remove}>Yes, remove</Button>
-                <Button secondary danger onClick={handleClose}>Cancel</Button>
+                <Button primary danger onClick={props.remove} aria-label='button-yes-remove'>Yes, remove</Button>
+                <Button secondary danger onClick={handleClose} aria-label='button-cancel-remove'>Cancel</Button>
                 </ModalFooter>
             </ModalContainer>
         </ModaBackground>

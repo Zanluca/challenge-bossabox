@@ -17,13 +17,10 @@ const getTool = async ({
         if (response.status === 200)
             return response.data
         else {
-            console.error('Não foi possível recuperar a lista de ferramentas')
-            console.log(response)
             return undefined
         }
     }
     catch (error) {
-        console.log(error);
         return undefined
     }
 }
@@ -41,13 +38,10 @@ const addTool = async (tool)  =>{
             return response.data
         } 
         else {
-            console.error('Não foi possível registrar a nova ferramenta')
-            console.log(response)
             return undefined   
         }
     }
     catch(error) {
-        console.log(error)
         return undefined
     }
 }
@@ -59,13 +53,10 @@ const deleteTool = async (toolID) => {
         if (response.status === 200)
             return true
         else {
-            console.error('Não foi possível exluir a ferramenta')
-            console.log(response)
             return undefined     
         }
     }
     catch(error) {
-        console.log(error)
         return undefined
     }
 }

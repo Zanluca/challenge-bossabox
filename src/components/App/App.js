@@ -11,7 +11,6 @@ import useDebounce from '../../utils/use-debounce'
 import { Container, AppContent, GlobalStyle, Grid } from './style'
 import { Button } from '../Button/'
 import { InputText } from '../InputText'
-import Card from '../../components/Card'
 import CardList from '../../components/CardList'
 import ModalRemove from '../../components/Modal/ModalRemove'
 import ModalAddTool from '../../components/Modal/ModalAddTool'
@@ -105,7 +104,7 @@ function App() {
       <GlobalStyle />
       <Container>
         <AppContent>
-          <h1>VUTTR</h1>
+          <h1 data-testid='title'>VUTTR</h1>
           <h3>Very Useful Tools to Remember</h3>
           <Grid>
             <InputText value={searchString} type='text' placeholder='&#xF002; search' onChange={e => setSearchString(e.target.value)} />
@@ -113,17 +112,9 @@ function App() {
               <input id='search-by-tag' type='checkbox' defaultChecked={isSearchOnlyTags} onChange={e => setIsSearchOnlyTags(e.target.checked)} />
               <label htmlFor='search-by-tag'>search in tags only</label>
             </span>
-            <Button primary neutral onClick={handleShowAddTool}><FontAwesomeIcon icon='plus' /> Add</Button>
+            <Button data-testid='button-add' primary neutral onClick={handleShowAddTool}><FontAwesomeIcon icon='plus' /> Add</Button>
           </Grid>
-          <CardList>
-            {
-              listTools.map((tool) => (
-                <Card key={tool.id}
-                  tool={tool}
-                  showRemove={handleShowRemove} />
-              ))
-            }
-          </CardList>
+          <CardList tools={listTools} handleShowRemove={handleShowRemove}/>
         </AppContent>
         {selectedTool &&
           <ModalRemove
