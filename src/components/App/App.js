@@ -58,9 +58,6 @@ function App() {
   }, [debounceSearchTerm, isSearchOnlyTags])
 
   function handleShowRemove(tool) {
-    const body = document.body
-    body.style.height = '100vh';
-    body.style.overflowY = 'hidden';
     setShowRemove(true)
     setSelectedTool(tool)
   }
@@ -68,24 +65,18 @@ function App() {
   function handleCloseRemove() {
     setShowRemove(false)
     setSelectedTool(null)
-    const body = document.body
-    body.style.overflowY = 'auto';
   }
 
   async function handleRemoveTool() {
-    const deletedOK = await deleteTool(selectedTool.id)
     setShowRemove(false)
+    const deletedOK = await deleteTool(selectedTool.id)
     setSelectedTool(null)
-    const body = document.body
-    body.style.overflowY = 'auto';
     if (deletedOK)
       setListTools(listTools.filter(tool => tool.id !== selectedTool.id))
   }
 
   async function handleAddTool(tool) {
     const data = await addTool(tool)
-    const body = document.body
-    body.style.overflowY = 'auto';
     setShowAdd(false)
     if (data)
       setListTools([...listTools, data])

@@ -1,9 +1,10 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {ModaBackground, ModalContainer, ModalTitle, ModalBody, ModalFooter, LabelInput} from './style'
 import {Button} from '../Button'
 import {InputText, InputTextLarge} from '../InputText'
+import BaseModal from './BaseModal'
 import close from '../../assets/Close.svg'
 
 const defaultTool = {
@@ -18,10 +19,13 @@ function ModalAddTool(props) {
     const [tool, setTool] = useState(defaultTool)
     const [tagsStr, setTagsStr] = useState('')
     
+    useEffect(() => {        
+        setTool(defaultTool)
+        setTagsStr('')
+    }, [props.show])
+
     function handleBackgroungClick(e){
         if (e.target === refBackground.current) {
-            setTool(defaultTool)
-            setTagsStr('')
             props.close()
         }
     }
@@ -63,7 +67,7 @@ function ModalAddTool(props) {
     }
 
     return (
-        <ModaBackground data-testid='modal-add' ref={refBackground} onClick={(e) => handleBackgroungClick(e)} show={props.show}>
+        <BaseModal testeID='modal-add' onClose={props.close} show={props.show}>
             <ModalContainer>
                 <ModalTitle>
                     <span><FontAwesomeIcon icon='plus'/> Add new tool</span>
@@ -86,7 +90,7 @@ function ModalAddTool(props) {
                 <Button aria-label='button-add-tool' primary neutral onClick={() => props.addTool(tool)}>Add tool</Button>
                 </ModalFooter>
             </ModalContainer>
-        </ModaBackground>
+        </BaseModal>
     )
 }
 

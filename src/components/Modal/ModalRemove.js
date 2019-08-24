@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {ModaBackground, ModalContainer, ModalTitle, ModalBody, ModalFooter} from './style'
 import {Button} from '../Button'
-import close from '../../assets/Close.svg'
+import BaseModal from './BaseModal'
+
+import closeIcon from '../../assets/Close.svg'
 
 function ModalRemove(props) {
     const refBackground = useRef(null)
@@ -19,11 +21,11 @@ function ModalRemove(props) {
     }
 
     return (
-        <ModaBackground data-testid='modal-remove' ref={refBackground} onClick={(e) => handleBackgroungClick(e)} show={props.show}>
+        <BaseModal testeID='modal-remove'  onClose={props.close} show={props.show}>
             <ModalContainer>
                 <ModalTitle>
                     <span><FontAwesomeIcon icon='times'/> Remove tool</span>
-                    <img src={close} alt='close' onClick={handleClose} />
+                    <img src={closeIcon} alt='close' onClick={handleClose} />
                 </ModalTitle>
                 <ModalBody>
                     Are you sure you want to remove {props.name}?
@@ -33,7 +35,7 @@ function ModalRemove(props) {
                 <Button secondary danger onClick={handleClose} aria-label='button-cancel-remove'>Cancel</Button>
                 </ModalFooter>
             </ModalContainer>
-        </ModaBackground>
+        </BaseModal>
     )
 }
 
