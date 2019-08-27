@@ -1,4 +1,4 @@
-# Nome do produto
+# VUTTR (Very Useful Tools to Remember)
 > Desafio front-end BossaBox.
 
 O desafio consistia em implementar um VUTTR (Very Useful Tools to Remember). Para isso deveria seguir as seguintes instruções: [https://www.notion.so/Dev-Front-End-7e048c1d54274a15b26e50f2a4d52d6c](https://www.notion.so/Dev-Front-End-7e048c1d54274a15b26e50f2a4d52d6c)
