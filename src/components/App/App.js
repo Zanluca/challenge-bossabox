@@ -26,8 +26,10 @@ function App() {
   const [isSearchOnlyTags, setIsSearchOnlyTags] = useState(false)
   const debounceSearchTerm = useDebounce(searchString, 500)
 
+  /** 
+   * Responsável por fazer a busca da lista de ferramentas quando a página é carregada.
+   */
   useEffect(() => {
-    document.title = 'Teste'
     async function getData() {
       const tools = await getTool()
       if (tools)
@@ -37,6 +39,9 @@ function App() {
 
   }, [])
 
+  /** 
+   * Responsável por fazer a busca da lista de ferramentas filtrada somente pelo texto ou pelas tags. 
+   */
   useEffect(() => {
     async function getData() {
       let tools
@@ -105,7 +110,7 @@ function App() {
             </span>
             <Button data-testid='button-add' primary neutral onClick={handleShowAddTool}><FontAwesomeIcon icon='plus' /> Add</Button>
           </Grid>
-          <CardList tools={listTools} handleShowRemove={handleShowRemove}/>
+          <CardList tools={listTools} handleShowRemove={handleShowRemove} highlight = {debounceSearchTerm} />
         </AppContent>
         {selectedTool &&
           <ModalRemove

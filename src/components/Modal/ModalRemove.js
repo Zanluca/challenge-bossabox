@@ -1,27 +1,20 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import {ModaBackground, ModalContainer, ModalTitle, ModalBody, ModalFooter} from './style'
+import {ModalContainer, ModalTitle, ModalBody, ModalFooter} from './style'
 import {Button} from '../Button'
 import BaseModal from './BaseModal'
 
 import closeIcon from '../../assets/Close.svg'
 
 function ModalRemove(props) {
-    const refBackground = useRef(null)
-    
-    function handleBackgroungClick(e){
-        if (e.target === refBackground.current) {
-            props.close()
-        }
-    }
 
     function handleClose() {
         props.close()
     }
 
     return (
-        <BaseModal testeID='modal-remove'  onClose={props.close} show={props.show}>
+        <BaseModal testeID='modal-remove' onClose={props.close} show={props.show}>
             <ModalContainer>
                 <ModalTitle>
                     <span><FontAwesomeIcon icon='times'/> Remove tool</span>

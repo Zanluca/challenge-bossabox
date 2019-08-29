@@ -4,7 +4,8 @@ import Card from '../Card'
 
 function CardList({
     tools = [], 
-    handleShowRemove = () => {}
+    handleShowRemove = () => {},
+    highlight = ''
 }) {
 
 
@@ -13,7 +14,8 @@ function CardList({
             {tools.map((tool) => (
                 <Card data-testid='card' key={tool.id}
                   tool={tool}
-                  showRemove={handleShowRemove} />
+                  showRemove={handleShowRemove}
+                  highlight={highlight} />
               ))}
         </List>
     )

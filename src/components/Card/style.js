@@ -34,6 +34,11 @@ const CardBody = styled.div`
 const CardFooter = styled.div`
     font-weight: bold;
     margin-bottom: 1em;
+
+    mark {
+        padding: 0;
+        background-color: #ffd703;
+    }
 `
 
 export {

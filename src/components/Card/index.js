@@ -12,8 +12,20 @@ const defaultTool = {
 
 function Card({
   tool = defaultTool,
-  showRemove = () => {}
+  showRemove = () => {},
+  highlight = ''
 }) {
+
+  /**
+   *Destaca a tag que corresponte exatamento com o termo que está sendo buscado.
+   */
+  function highlightTag(tag, key) {
+    if (tag === highlight)
+      return <span key={key}><mark>#{tag}</mark> </span>
+    else
+      return <span key={key}>#{tag} </span>
+  }
+
   return (
     <CardContainer data-testid='card'>
       <CardTitleContainer>
@@ -24,7 +36,7 @@ function Card({
         {tool.description} 
       </CardBody>
       <CardFooter aria-label='tool-tags'>
-        {tool.tags.reduce(((result, tag, ) => `${result} #${tag}`), '')}
+        {tool.tags.map((tag, index) => highlightTag(tag, index))}
       </CardFooter>
     </CardContainer>
   )

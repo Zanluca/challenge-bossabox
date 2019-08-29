@@ -1,7 +1,7 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import {ModaBackground, ModalContainer, ModalTitle, ModalBody, ModalFooter, LabelInput} from './style'
+import { ModalContainer, ModalTitle, ModalBody, ModalFooter, LabelInput} from './style'
 import {Button} from '../Button'
 import {InputText, InputTextLarge} from '../InputText'
 import BaseModal from './BaseModal'
@@ -15,7 +15,6 @@ const defaultTool = {
 }
 
 function ModalAddTool(props) {
-    const refBackground = useRef(null)
     const [tool, setTool] = useState(defaultTool)
     const [tagsStr, setTagsStr] = useState('')
     
@@ -23,12 +22,6 @@ function ModalAddTool(props) {
         setTool(defaultTool)
         setTagsStr('')
     }, [props.show])
-
-    function handleBackgroungClick(e){
-        if (e.target === refBackground.current) {
-            props.close()
-        }
-    }
 
     function handleClose() {
         setTool(defaultTool)
