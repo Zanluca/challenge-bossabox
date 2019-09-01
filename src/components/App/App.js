@@ -45,20 +45,21 @@ function App() {
   useEffect(() => {
     async function getData() {
       let tools
-
-      if (isSearchOnlyTags)
+      if ((isSearchOnlyTags) && (debounceSearchTerm.trim() !== ''))
         tools = await getTool(
           {queryTag : debounceSearchTerm}
         )
-      else
+      else if (debounceSearchTerm.trim() !== '')
         tools = await getTool(
-          {queryString : debounceSearchTerm}
-        )    
+          {queryString : debounceSearchTerm}        
+        )  
+      else
+        tools = await getTool()   
       if (tools)
         setListTools(tools)
     }
-    if ((debounceSearchTerm) && (debounceSearchTerm.trim() !== ''))
-      getData()
+
+    getData()
 
   }, [debounceSearchTerm, isSearchOnlyTags])
 
