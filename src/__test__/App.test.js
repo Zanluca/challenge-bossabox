@@ -163,7 +163,6 @@ test('cancel remove tool ', async () => {
 
     const allNames = cardsNames.map(name => name.textContent)
 
-    const nameTool = within(cards[0]).getByLabelText('tool-name')
     const removeButton = within(cards[0]).getByLabelText('button-remove')
     fireEvent.click(removeButton)
 
